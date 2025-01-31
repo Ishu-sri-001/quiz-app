@@ -1,0 +1,99 @@
+import { useState, useEffect } from "react"
+import StartScreen from "./components/start-screen"
+import QuizScreen from "./components/quiz-screen"
+import ResultScreen from "./components/result-screen"
+
+const App = () => {
+  const [quizState, setQuizState] = useState("loading")
+  const [quizData, setQuizData] = useState(null)
+  const [score, setScore] = useState(0)
+  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    fetchQuizData()
+  }, [])
+
+  const fetchQuizData = async () => {
+    try {
+      // const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.jsonserve.com/Uw5CrX`, {
+        const response = await fetch('/api/Uw5CrX')
+      //   method: 'GET',
+      //   headers: {
+      //     'Origin': 'http://localhost:5173'
+      //   }
+      // })
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+
+      const data = await response.json()
+      setQuizData(data)
+      setQuizState("start")
+    } catch (error) {
+      console.error("Error fetching quiz data:", error)
+      setError(error.message)
+      setQuizState("error")
+    }
+  }
+
+  const startQuiz = () => {
+    setQuizState("countdown")
+    setTimeout(() => setQuizState("quiz"), 3000)
+  }
+
+  const endQuiz = () => {
+    setQuizState("result")
+  }
+
+  const restartQuiz = () => {
+    setQuizState("start")
+    setScore(0)
+    setCurrentQuestion(0)
+  }
+
+  if (quizState === "loading") {
+    return <div className="text-center text-2xl">Loading quiz data...</div>
+  }
+
+  if (quizState === "error") {
+    return (
+      <div className="text-center text-2xl text-red-600">
+        Error loading quiz data: {error}. Please try again later.
+      </div>
+    )
+  }
+
+  return (
+    <div className="min-h-screen w-full bg-white flex items-center justify-center">
+      <div className="w-full max-w-2xl mx-5 lg:mx-0 lg:max-w-4xl p-8 bg-blue-950 rounded-lg shadow-lg">
+        {quizState === "start" && <StartScreen quizData={quizData} onStart={startQuiz} />}
+        {/* {quizState === "countdown" && (
+          <div className="text-6xl font-bold text-center text-blue-600">
+            Countdown
+          </div>
+        )} */}
+        {quizState === "quiz" && (
+          <QuizScreen
+            quizData={quizData}
+            currentQuestion={currentQuestion}
+            setCurrentQuestion={setCurrentQuestion}
+            score={score}
+            setScore={setScore}
+            endQuiz={endQuiz}
+          />
+        )}
+        {quizState === "result" && (
+          <ResultScreen 
+            score={score} 
+            totalQuestions={quizData.questions.length} 
+            onRestart={restartQuiz} 
+          />
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default App
