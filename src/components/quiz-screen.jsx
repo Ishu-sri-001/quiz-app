@@ -131,6 +131,8 @@ const QuizScreen = ({ quizData, currentQuestion, setCurrentQuestion, score, setS
           {currentQuestion + 1 === quizData.questions.length ? "Finish" : "Next Question"}
         </button>
       )} */}
+
+
     </div>
   )
 }
