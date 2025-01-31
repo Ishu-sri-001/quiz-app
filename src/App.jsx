@@ -18,14 +18,7 @@ const App = () => {
 
   const fetchQuizData = async () => {
     try {
-      // const response = await fetch(`https://cors-anywhere.herokuapp.com/https://api.jsonserve.com/Uw5CrX`, {
         const response = await fetch('/api/Uw5CrX')
-      //   method: 'GET',
-      //   headers: {
-      //     'Origin': 'http://localhost:5173'
-      //   }
-      // })
-
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`)
       }
@@ -40,10 +33,6 @@ const App = () => {
     }
   }
 
-  // const startQuiz = () => {
-  //   setQuizState("countdown")
-  //   setTimeout(() => setQuizState("quiz"), 3000)
-  // }
 
   const endQuiz = () => {
     setQuizState("result")
@@ -70,12 +59,12 @@ const App = () => {
   }
 
   if (quizState === "loading") {
-    return <div className="text-center text-2xl">Loading quiz data...</div>
+    return <div className="min-h-screen flex items-center justify-center border-2 border-blue-950 p-5 text-center text-bold text-2xl">Loading quiz data...</div>
   }
 
   if (quizState === "error") {
     return (
-      <div className="text-center text-2xl text-red-600">
+      <div className="min-h-screen flex items-center justify-center text-center text-2xl text-red-600">
         Error loading quiz data: {error}. Please try again later.
       </div>
     )

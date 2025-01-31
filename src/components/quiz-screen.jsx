@@ -123,15 +123,6 @@ const QuizScreen = ({ quizData, currentQuestion, setCurrentQuestion, score, setS
             </ReactMarkdown>
         </div>
       )}
-      {/* {showDetailedSolution && (
-        <button
-          onClick={handleNextQuestion}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition duration-300"
-        >
-          {currentQuestion + 1 === quizData.questions.length ? "Finish" : "Next Question"}
-        </button>
-      )} */}
-
 
     </div>
   )

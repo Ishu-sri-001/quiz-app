@@ -18,7 +18,7 @@ const ResultScreen = ({ score, totalQuestions, onRestart }) => {
       window.removeEventListener('resize', detectSize);
       clearTimeout(timer);
     };
-  }, [setWindowDimension]); // Added setWindowDimension to dependencies
+  }, [setWindowDimension]); 
 
   const percentage = Math.round((score / (totalQuestions * 4)) * 100);
 
@@ -57,25 +57,3 @@ const ResultScreen = ({ score, totalQuestions, onRestart }) => {
 };
 
 export default ResultScreen;
-
-// const ResultScreen = ({ score, totalQuestions, onRestart }) => {
-//     const percentage = Math.round((score / (totalQuestions * 4)) * 100)
-  
-//     return (
-//       <div className="text-center text-white">
-//         <h2 className="text-2xl md:text-3xl font-bold mb-8">Quiz Completed!</h2>
-//         <p className="text-xl md:text-2xl mb-4">
-//           Your Score: {score.toFixed(1)} / {totalQuestions * 4}
-//         </p>
-//         <p className="text-xl mb-6">Percentage: {percentage}%</p>
-//         <button
-//           onClick={onRestart}
-//           className="bg-white hover:text-lg cursor-pointer text-blue-950 font-bold py-2 px-4 rounded-full transition duration-300"
-//         >
-//           Restart Quiz
-//         </button>
-//       </div>
-//     )
-//   }
-  
-//   export default ResultScreen
