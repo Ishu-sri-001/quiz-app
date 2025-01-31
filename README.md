@@ -1,7 +1,7 @@
 # Quiz App
 
-## Quiz app Video Link 
-The link to the video is : https://drive.google.com/file/d/1EoUJ5gs03D6oCyZwBpdXJjgncnmFNXJJ/view?usp=sharing
+Demo Video : https://drive.google.com/file/d/1EoUJ5gs03D6oCyZwBpdXJjgncnmFNXJJ/view?usp=sharing
+Demo Screenshots : https://drive.google.com/drive/folders/16TndR8fH-k89sAOzEOts2vqRitUArZvx?usp=sharing 
 
 ## Project Overview
 
