@@ -1,8 +1,5 @@
 # Quiz App
 
-## Live Demo
-
-Check out the live demo of the Quiz App: [abc.com](https://abc.com)
 
 ## Project Overview
 
